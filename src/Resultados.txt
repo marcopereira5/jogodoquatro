@@ -1,0 +1,8 @@
+ A-ESTRELA 
+ Desempenho: 
+ - Tempo de Execução: 2 ms 
+ - Nos Gerados: 846 
+ - Nos expandidos: 4 
+ - Penetrancia: 0.0059101656 
+ - Fator de Ramificação: 5.109215 
+ ********************************************************************************************
