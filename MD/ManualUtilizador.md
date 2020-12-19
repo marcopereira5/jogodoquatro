@@ -50,7 +50,7 @@ O programa tem um funcionamento simples:
 - No caso de escolher o DFS (Depth-First Search) terá de especificar uma profundidade de limite e no caso de escolher o A-Estrela terá de escolher uma das duas heuristicas implementadas no programa:  
 ![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/dfs.png "problemas")
 ![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/a-estrela.png "problemas")
-- Depois de especificar estas propriedades (ou não no caso do BFS) o prograna irá executar e mostrar uma solução e os estados durante as suas iterações:
+- Depois de especificar estas propriedades (ou não no caso do BFS) o programa irá executar e mostrar uma solução e os estados durante as suas iterações:
 ![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/solucao2.png "problemas")
 - Em seguida se o utilizador quiser observar algumas da propriedades técnicas dos algoritmos (fator de ramificação, penetrância, Nos gerados e Nos expandidos) poderá vizualizá-las no ficheiro que é criado automaticamente intitulado de [resultados.txt](https://github.com/marcopereira5/jogodoquatro/blob/master/src/Resultados.txt):
 ![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/resultados.png "problemas")
