@@ -1122,6 +1122,7 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
 	
 	* **A-ESTRELA (2ª Heurística):
+		```
 		 SOLUÇÃO 
 		 **************************************************************** 
 		 - Tabuleiro: 
@@ -1179,6 +1180,7 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 		 - Heuristica: 8 
 		 - Custo: 8 
 		 ----------------------------------------------------------------------------------------------
+		 ```
 		 ```
 		 A-ESTRELA 
 		 Desempenho: 
