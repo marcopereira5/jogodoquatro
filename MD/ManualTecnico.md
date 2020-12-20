@@ -759,3 +759,435 @@ Neste problema podemos observar que o DFS foi muito mais eficiente do que qualqu
 		 - Fator de Ramificação: 25.136809 
 		 ********************************************************************************************
 		 ```
+* Análise Crítica  
+Como podemos observar o DFS continua a ser o algoritmo com melhores resultados. Já começamos a ver algumas diferenças entre o A-ESTRELA com a 2ª heurística e o A-ESTRELA com a 1ª Heurística, a 2ª Heurística neste problema criou uma procura muito mais eficiente que a 1ª. Conseguimos então ir comprovando a teoria do problema anterior, muitos sucessores por cada nó e múltiplas soluções em vários níveis vão favorecendo mais o DFS que os outros algoritmos de procura.
+
+
+### Problema D
+* Estado
+```
+(
+	(
+		((branca quadrada baixa cheia) (branca redonda alta cheia) (preta redonda alta cheia) (preta quadrada baixa oca)) 
+		(0 0 0 0) 
+		(0 0 0 0) 
+		(0 0 0 0)
+	) 
+	(
+		(preta redonda alta oca) (preta quadrada baixa cheia) (branca redonda alta oca) (branca redonda baixa oca) (preta redonda baixa oca) (branca quadrada alta oca) (preta quadrada alta oca) (branca quadrada baixa oca) (preta redonda alta cheia) (branca redonda baixa cheia) (preta redonda baixa cheia) (branca quadrada alta cheia) (preta quadrada alta cheia)
+	)
+)
+```
+
+* Resultados
+	* **BFS**:  
+	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+	* **DFS (Profundidade: 8):
+		```
+		 SOLUÇÃO 
+		 **************************************************************** 
+		 - Tabuleiro: 
+		 ((BRANCA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (PRETA QUADRADA BAIXA OCA))
+		 ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA))
+		 ((PRETA QUADRADA BAIXA CHEIA) 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+		 - Profundidade: 5 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (PRETA QUADRADA BAIXA OCA))
+		 ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA))
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+		 - Profundidade: 4 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (PRETA QUADRADA BAIXA OCA))
+		 ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+		 - Profundidade: 3 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (PRETA QUADRADA BAIXA OCA))
+		 ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+		 - Profundidade: 2 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (PRETA QUADRADA BAIXA OCA))
+		 ((PRETA REDONDA ALTA OCA) 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+		 - Profundidade: 1 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (PRETA QUADRADA BAIXA OCA))
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+		 - Profundidade: 0 
+		----------------------------------------------------------------------------------------------
+		```
+		```
+		 DFS 
+		 Desempenho: 
+		 - Tempo de Execução: 0 ms 
+		 - Nos Gerados: 560 
+		 - Nos expandidos: 4 
+		 - Penetrancia: 0.010714286 
+		 - Fator de Ramificação: 4.4103623 
+		 ********************************************************************************************
+		```
+	* **A-ESTRELA (1ª Heurística)**:  
+	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+	* **A-ESTRELA  (2ª Heurística)**:  
+	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+* Análise Crítica  
+Como podemos observar este problema apenas correu no DFS. O LispWorks tem um limite de memória heap que impede os outros algoritmos de correrem até ao fim. Nenhuma das Heurísticas conseguiu otimizar o A-Estrela, pois no caso deste problema as duas heurísticas são anuladas pois são as duas igual a 1 quando o programa começa, fazendo com que todos os nós tenham mesmo custo heurístico. O custo heurístico irá ser 1 em todos os nós até à solução e o A-Estrela irá tornar-se no BFS sendo que não existe nenhum critério aplicado à procura.
+
+### Problema E
+* Estado: 
+```
+	(
+		(
+			(0 0 0 0) 
+			(0 0 0 0) 
+			(0 0 (preta redonda alta oca) 0) 
+			(0 0 0 0)
+		) 
+		(
+		(preta quadrada baixa cheia) (branca redonda alta oca) (branca redonda baixa oca) (preta redonda baixa oca) (branca quadrada alta oca) (preta quadrada alta oca) (branca quadrada baixa oca) (preta quadrada baixa oca)(branca redonda alta cheia) (preta redonda alta cheia) (branca redonda baixa cheia) (preta redonda baixa cheia) (branca quadrada alta cheia) (preta quadrada alta cheia) (branca quadrada baixa cheia)
+		)
+	)
+```
+
+* Resultados
+	* **BFS**:  
+	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+	* **DFS (Profundidade = 12)**
+		```
+		 SOLUÇÃO 
+		 **************************************************************** 
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA))
+		 ((PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA OCA))
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 8 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA))
+		 ((PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 7 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA))
+		 ((PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 6 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA))
+		 ((PRETA QUADRADA ALTA OCA) 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 5 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA))
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 4 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) 0)
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 3 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) 0 0)
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 2 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) 0 0 0)
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 1 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 0 
+		----------------------------------------------------------------------------------------------
+		```
+		```
+		 DFS 
+		 Desempenho: 
+		 - Tempo de Execução: 0 ms 
+		 - Nos Gerados: 1100 
+		 - Nos expandidos: 7 
+		 - Penetrancia: 0.008181818 
+		 - Fator de Ramificação: 2.5078535 
+		 ********************************************************************************************
+		```
+	* **A-ESTRELA (1ª Heurística)**:  
+		![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+		
+	* **A-ESTRELA (2ª Heurística):
+    ```
+		 SOLUÇÃO 
+		 **************************************************************** 
+		 - Tabuleiro: 
+		 ((BRANCA REDONDA ALTA OCA) 0 0 0)
+		 (0 (PRETA REDONDA BAIXA OCA) 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 (BRANCA REDONDA BAIXA OCA))
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 3 
+		 - Heuristica: 0 
+		 - Custo: 3 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA REDONDA ALTA OCA) 0 0 0)
+		 (0 (PRETA REDONDA BAIXA OCA) 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 2 
+		 - Heuristica: 2 
+		 - Custo: 4 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((BRANCA REDONDA ALTA OCA) 0 0 0)
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 1 
+		 - Heuristica: 4 
+		 - Custo: 5 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 (PRETA REDONDA ALTA OCA) 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 0 
+		 - Heuristica: 6 
+		 - Custo: 6 
+		 ----------------------------------------------------------------------------------------------
+		```
+		```
+		 A-ESTRELA 
+		 Desempenho: 
+		 - Tempo de Execução: 4 ms 
+		 - Nos Gerados: 590 
+		 - Nos expandidos: 3 
+		 - Penetrancia: 0.006779661 
+		 - Fator de Ramificação: 8.028603 
+		 ********************************************************************************************
+		 ```
+ 
+ * Análise Crítica  
+ Neste problema conseguimos observar a melhoria da 2ª Heurística em relação à 1ª. Apesar do DFS ter conseguido correr e ter encontrado uma solução, o A-Estrela com a 2ª Heurística foi mais eficiente e conseguiu encontrar a melhor solução possível para este problema. Pode-se talvez ter uma melhor solução se diminuirmos a profundidade do DFS até 4, sendo que com profundidade = 3 o DFS não executa e excede o limite do Heap. O BFS continua a não conseguir executar devido à quantidade de sucessores e iterações necessárias para encontrar a solução. O A-Estrela com a 1ª Heurística continua a ser bastante ineficiente e não consegue executar devido às limitações do LispWorks.
+
+### Problema F
+* Estado: 
+```
+(
+	(
+		(0 0 0 0) 
+		(0 0 0 0) 
+		(0 0 0 0) 
+		(0 0 0 0)
+	) 
+	(
+		(preta redonda alta oca) (preta quadrada baixa cheia) (branca redonda alta oca) (branca redonda baixa oca) (preta redonda baixa oca) (branca quadrada alta oca) (preta quadrada alta oca) (branca quadrada baixa oca) (preta quadrada baixa oca)(branca redonda alta cheia) (preta redonda alta cheia) (branca redonda baixa cheia) (preta redonda baixa cheia) (branca quadrada alta cheia) (preta quadrada alta cheia) (branca quadrada baixa cheia)
+	)
+)
+```
+
+* Resultados: 
+	* **BFS**:  
+	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+	* **DFS (Profundidade = 5)**
+		```
+		 SOLUÇÃO 
+		 **************************************************************** 
+		 - Tabuleiro: 
+		 ((PRETA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) (PRETA REDONDA BAIXA OCA) (PRETA QUADRADA ALTA OCA))
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 4 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) (PRETA REDONDA BAIXA OCA) 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 3 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 2 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA REDONDA ALTA OCA) 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 1 
+		----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 0 
+		----------------------------------------------------------------------------------------------
+		```
+		```
+		 DFS 
+		 Desempenho: 
+		 - Tempo de Execução: 0 ms 
+		 - Nos Gerados: 50689 
+		 - Nos expandidos: 49452 
+		 - Penetrancia: 1.1836888E-4 
+		 - Fator de Ramificação: 8.508996 
+		 ********************************************************************************************
+		```
+	* **A-ESTRELA (1ª Heurística)**:   
+	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
+	
+	* **A-ESTRELA (2ª Heurística):
+		 SOLUÇÃO 
+		 **************************************************************** 
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA REDONDA BAIXA OCA))
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 4 
+		 - Heuristica: 0 
+		 - Custo: 4 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA BAIXA OCA) 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 3 
+		 - Heuristica: 2 
+		 - Custo: 5 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA BAIXA OCA) 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 2 
+		 - Heuristica: 4 
+		 - Custo: 6 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 ((PRETA QUADRADA BAIXA CHEIA) 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 1 
+		 - Heuristica: 6 
+		 - Custo: 7 
+		 ----------------------------------------------------------------------------------------------
+		 - Tabuleiro: 
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+		 (0 0 0 0)
+
+		 - Reserva: ((PRETA REDONDA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) (BRANCA REDONDA ALTA OCA) (BRANCA REDONDA BAIXA OCA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA ALTA OCA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA ALTA CHEIA) (PRETA REDONDA ALTA CHEIA) (BRANCA REDONDA BAIXA CHEIA) (PRETA REDONDA BAIXA CHEIA) (BRANCA QUADRADA ALTA CHEIA) (PRETA QUADRADA ALTA CHEIA) (BRANCA QUADRADA BAIXA CHEIA)) 
+		 - Profundidade: 0 
+		 - Heuristica: 8 
+		 - Custo: 8 
+		 ----------------------------------------------------------------------------------------------
+		 ```
+		 A-ESTRELA 
+		 Desempenho: 
+		 - Tempo de Execução: 2 ms 
+		 - Nos Gerados: 846 
+		 - Nos expandidos: 4 
+		 - Penetrancia: 0.0059101656 
+		 - Fator de Ramificação: 5.109215 
+		 ********************************************************************************************
+		 ```
+	* Análise Crítica:  
+	Neste problema podemos ver o quanto mais eficiente A-Estrela quando a Heurística é otimizada para o problema. O BFS e o A-Estrela com a 1ª Heurística não executaram devido à explicação do problema anterior. Neste problema o DFS com uma profundidade máxima de 5 tem uma menor eficiência que o A-Estrela com a segunda Heurística pois como o A-Estrela tem uma Heurística eficiente consegue encontrar logo o melhor caminho a seguir e o DFS vai procurando sem qualquer critério. Se aumentarmos a profundidade máxima o DFS poderá ser mais eficiente, mas nunca chegará à melhor solução possível.
