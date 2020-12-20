@@ -24,6 +24,7 @@
 
 (defun bfs (no-inicial fun-objetivo fun-sucessores operadores 
                        &optional (abertos nil) (fechados nil))
+"Algoritmo de procura BFS"
   
   (let* ((START_TIME (get-internal-real-time)) (SUCESSORES-CALCULADOS (funcall fun-sucessores (COND ((null no-inicial) (car abertos))
                         (T no-inicial)) operadores 'bfs))
@@ -45,6 +46,7 @@
 
 (defun dfs (no-inicial fun-objetivo fun-sucessores operadores max-nivel
                        &optional (abertos nil) (fechados nil))
+"Algoritmo de procura DFS"
   
   (let* ((START_TIME (get-internal-real-time)) (SUCESSORES-CALCULADOS (funcall fun-sucessores (COND 
                                                           ((null no-inicial) (car abertos))
@@ -68,11 +70,13 @@
   )
 
 (defun abertos-dfs (abertos sucessores)
+"Função que adiciona aos abertos os sucessores de acordo com o algoritmo DFS"
   (append sucessores abertos)
   )
 
 
 (defun abertos-bfs (abertos sucessores)
+"Função que adiciona aos abertos os sucessores de acordo com o algoritmo BFS"
   (append abertos sucessores)
 )
 

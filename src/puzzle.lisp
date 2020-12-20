@@ -37,6 +37,7 @@
 )
 
 (defun no-estado (no)
+"Função que retorna o estado do no"
   (car no)
 )
 
@@ -56,16 +57,19 @@
 )
 
 (defun no-pai (no)
+"Função que retorna o no pai do no"
   (cond 
    ((null no) nil)
    (t (cadddr no)))
 )
 
 (defun no-custo (no)
+"Função que retorna o custo do nó"
   (+ (caddr no) (cadr no))
 )
 
 (defun no-heuristica (no)
+"Função que retorna a heuristica do nó"
   (caddr no)
 )
 
@@ -268,6 +272,7 @@
 )
 
 (defun gerar-sucessores-df (no operador peca max-nivel)
+"Função que retorna os sucessores do DFS de acordo com a profundidade"
   (cond
    ((>= (no-profundidade no) max-nivel) nil)
    (T (let ((NOVO-NO (novo-sucessor no (car operador) (cadr operador) peca)))

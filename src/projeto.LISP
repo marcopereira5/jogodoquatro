@@ -10,6 +10,7 @@
 )
 
 (defun mostrar-no (no algoritmo)
+"Função que retorna uma string de toda a composição de um nó"
   (cond 
    ((null no) nil)
    ((equal algoritmo 'a-estrela) 
@@ -21,27 +22,32 @@
 )
 
 (defun penetrancia (caminho nos-gerados)
+"Função que retorna a penetrancia de uma solução"
   (float (/ caminho nos-gerados))
 )
 
-(defun biseccao (N nos-gerados epsilon &optional (a 0) (b 100))
+(defun bissecao (N nos-gerados epsilon &optional (a 0) (b 100))
+"Função que retorna uma aproximação de um zero de uma função qualquer seja o seu grau com o metodo da bissecao"
   (let* ((valor (average a b)) (valor-funcao (funcao valor N nos-gerados)))
     (cond 
      ((< (abs valor-funcao) epsilon) (float valor))
-     ((< valor-funcao 0) (biseccao N nos-gerados epsilon valor b))
-     ((> valor-funcao 0) (biseccao N nos-gerados epsilon a valor)))))
+     ((< valor-funcao 0) (bissecao N nos-gerados epsilon valor b))
+     ((> valor-funcao 0) (bissecao N nos-gerados epsilon a valor)))))
 
 (defun average (a b)
+"Função que retorna uma divisão para auxiliar o metodo da bisse"
   (/ (+ a b) 2)
 )
 
 (defun funcao (valor N nos-gerados)
+"Função que retorna a images de uma função de um certo ponto. A função testada aqui será do tipo b^n + b^(n-1) ... - nos-gerados = 0"
   (cond 
    ((= N 0) (- 0 nos-gerados))
    (t (+ (expt valor N) (funcao valor (1- N) nos-gerados))))
 )
 
 (defun escrever-no (string)
+"Função que cria ou escreve no ficheiro resultados.txt"
   (with-open-file (str (make-pathname :host "C" :directory '(:absolute "Users" "Home" "Desktop" "AI" "Projecto" "jogodoquatro" "src") :name "Resultados" :type "txt")
                      :direction :output
                      :IF-DOES-NOT-EXIST :create
@@ -51,6 +57,7 @@
 )
 
 (defun return-file (heuristic)
+"Função que lê o ficheiro porblemas.dat"
    (with-open-file (str (make-pathname :host "C" :directory '(:absolute "Users" "Home" "Desktop" "AI" "Projecto" "jogodoquatro" "src") :name "problemas" :type "dat")
                      :direction :input)
                    (return-list-file str heuristic)
@@ -58,12 +65,14 @@
 )
 
 (defun return-list-file (file heuristic)
+"Função que retorna uma lista em lisp dos problemas do ficheiro problemas.dat"
    (let* ((linha (read-line file nil :fim)))
          (cond 
           ((not (eq linha :fim)) (cond ((not (equal linha "-")) (cons (list (read-from-string linha) 0 (funcall heuristic (car (read-from-string linha))) nil) (return-list-file file heuristic))) (t (return-list-file file heuristic))))
           (t (close file) '()))))
 
 (defun print-problemas (problemas &optional (count 1))
+"Função que faz print de um problema do ficheiro problemas.dat"
   (cond 
    ((null problemas) '())
    (t (format t "Problema ~D: ~% - Tabuleiro: ~D ~% - Reserva: ~D ~% --------------------------------------------------------------------------------------------- ~%" count (car (caar problemas)) (cadr (caar problemas)))
@@ -71,6 +80,7 @@
 )
 
 (defun escolher-problema ()
+"Função que faz o prompt para o utilizador escolher o problema"
   (progn 
     (print-problemas (return-file 'heuristica-2))
     (format t "Escolher um problema: ")
@@ -81,6 +91,7 @@
 )
 
 (defun escolher-algoritmo ()
+"Função que faz o prompt para o utilizador escolher o algoritmo"
   (progn 
     (format t "Escolher um algoritmo: ~%")
     (format t "1 - BFS ~%2 - DFS ~%3 - A-ESTRELA ~%")
@@ -96,15 +107,17 @@
 )
 
 (defun escolher-profundidade ()
+"Função que faz o prompt para o utilizador escolher a profundidade"
   (progn 
     (format t "Profundidade: ")
     (let ((resposta (read)))
       (cond 
-       ((<= resposta 0) (progn (format t "Profundidade inválida. ~%") (sleep 1) (escolher-profundidade)))
+       ((or (<= resposta 0) (not (atom resposta))) (progn (format t "Profundidade inválida. ~%") (sleep 1) (escolher-profundidade)))
        (t resposta))))
 )
 
 (defun escolher-heuristica ()
+"Função que faz o prompt para o utilizador escolher a heuristica"
   (progn 
     (format t "1 - Heuristica - h(x) = 4 - p(x) onde p(x) é o valor máximo do alinhamento de peças com caracteristicas comuns~%")
     (format t "2 - Heuristica - h(x) = 8 - p(x) onde p(x) é o valor máximo do alinhamento de peças com caracteristicas comuns mais o valor máximo de casas numa linha que estão ocupadas por pecas (+ eficiente)~%")
@@ -118,6 +131,7 @@
 
 
 (defun iniciar ()
+"Função que inicia o programa"
   (let* ((problema (escolher-problema)) (algoritmo (escolher-algoritmo)) (profundidade (cond ((equal algoritmo 'dfs) (escolher-profundidade)) (t 9999))))
     (cond 
      ((equal algoritmo 'bfs) (format t "~%~%~% SOLUÇÃO ~% **************************************************************** ~%") 
