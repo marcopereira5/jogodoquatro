@@ -15,10 +15,16 @@
    ((null no) nil)
    ((equal algoritmo 'a-estrela) 
     (format t " - Tabuleiro: ~D ~% - Reserva: ~D ~% - Profundidade: ~D ~% - Heuristica: ~D ~% - Custo: ~D ~% ----------------------------------------------------------------------------------------------" 
-        (tabuleiro no) (reserva no) (no-profundidade no) (no-heuristica no) (no-custo no)) (terpri) (mostrar-no (cadddr no) algoritmo))
+        (mostrar-tabuleiro (tabuleiro no)) (reserva no) (no-profundidade no) (no-heuristica no) (no-custo no)) (terpri) (mostrar-no (cadddr no) algoritmo))
    ((or (equal algoritmo 'bfs) (equal algoritmo 'dfs)) 
     (format t " - Tabuleiro: ~D ~% - Reserva: ~D ~% - Profundidade: ~D ~%----------------------------------------------------------------------------------------------" 
-            (tabuleiro no) (reserva no) (no-profundidade no)) (terpri) (mostrar-no (cadddr no) algoritmo)))
+            (mostrar-tabuleiro (tabuleiro no)) (reserva no) (no-profundidade no)) (terpri) (mostrar-no (cadddr no) algoritmo)))
+)
+
+(defun mostrar-tabuleiro (tabuleiro)
+  (cond 
+   ((null tabuleiro) "~%")
+   (t (format nil (concatenate 'string (format nil "~% ~D" (car tabuleiro)) (mostrar-tabuleiro (cdr tabuleiro))))))
 )
 
 (defun penetrancia (caminho nos-gerados)
