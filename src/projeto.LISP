@@ -22,6 +22,7 @@
 )
 
 (defun mostrar-tabuleiro (tabuleiro)
+"Função que coloca o tabuleiro de maneira percetível para o utilizador"
   (cond 
    ((null tabuleiro) "~%")
    (t (format nil (concatenate 'string (format nil "~% ~D" (car tabuleiro)) (mostrar-tabuleiro (cdr tabuleiro))))))
