@@ -34,13 +34,13 @@ Representação de um nó / objeto
 	)
 	```
    * A Reserva: 
- ```lisp
-(
-	(preta quadrada baixa oca)
-	(branca redonda baixa cheia)
-	(preta quadrada alta cheia)
-)
- ```
+	```lisp
+	(
+		(preta quadrada baixa oca)
+		(branca redonda baixa cheia)
+		(preta quadrada alta cheia)
+	)
+	```
    
  * A profundidade do nó:
  `1`
