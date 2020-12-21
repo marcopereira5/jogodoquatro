@@ -37,11 +37,47 @@ Este programa tem como objetivo encontrar a melhor solução possível do Jogo D
 
 Temos o exemplo do seguinte tabuleiro: 
 
-![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/teste.png "Tabuleiro")
+```lisp
+(
+		(
+			((branca quadrada alta oca) (preta quadrada baixa cheia) 0 (preta quadrada alta oca)) 
+			((branca redonda alta oca) (preta redonda alta oca) (branca redonda alta cheia) 0) 
+			(0 (preta redonda alta cheia) (preta redonda baixa cheia) 0) 
+			((branca redonda baixa oca) (branca quadrada alta cheia) (preta redonda baixa oca) (branca quadrada baixa cheia))
+		)
+		(
+			(branca quadrada baixa oca)
+			(preta quadrada baixa oca)
+			(branca redonda baixa cheia)
+			(preta quadrada alta cheia)
+		)
+	)
+```
 
 A primeira componente da lista é um tabuleiro de teste com peças já colocadas, sendo que os zeros representam casas vazias. A segunda componente é caracterizada pelas peças de reserva que podem ser colocadas no tabuleiro para atingir um estado de solução. Depois de correr o programa podemos identificar a melhor solução e que peça se deve colocar para atingir este estado.
 
-![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/solucao.png "Tabuleiro")
+```lisp
+ SOLUÇÃO 
+ **************************************************************** 
+ - Tabuleiro: 
+ ((BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) (BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA ALTA OCA))
+ ((BRANCA REDONDA ALTA OCA) (PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA CHEIA) 0)
+ (0 (PRETA REDONDA ALTA CHEIA) (PRETA REDONDA BAIXA CHEIA) 0)
+ ((BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA CHEIA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA BAIXA CHEIA))
+ 
+ - Reserva: ((PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA BAIXA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+ - Profundidade: 1 
+----------------------------------------------------------------------------------------------
+ - Tabuleiro: 
+ ((BRANCA QUADRADA ALTA OCA) (PRETA QUADRADA BAIXA CHEIA) 0 (PRETA QUADRADA ALTA OCA))
+ ((BRANCA REDONDA ALTA OCA) (PRETA REDONDA ALTA OCA) (BRANCA REDONDA ALTA CHEIA) 0)
+ (0 (PRETA REDONDA ALTA CHEIA) (PRETA REDONDA BAIXA CHEIA) 0)
+ ((BRANCA REDONDA BAIXA OCA) (BRANCA QUADRADA ALTA CHEIA) (PRETA REDONDA BAIXA OCA) (BRANCA QUADRADA BAIXA CHEIA))
+ 
+ - Reserva: ((BRANCA QUADRADA BAIXA OCA) (PRETA QUADRADA BAIXA OCA) (BRANCA REDONDA BAIXA CHEIA) (PRETA QUADRADA ALTA CHEIA)) 
+ - Profundidade: 0 
+----------------------------------------------------------------------------------------------
+```
 
 Este problema específico tinha uma solução simples e é identificado pela colocação da peça Branca Quadrada Baixa Oca na terceira casa da primeira linha. Com esta colocação podemos observar que a primeira linha fica com 4 peças com a caracteristica Quadrada e atinge-se um estado de solução.
 
