@@ -147,3 +147,22 @@ Heuristica:
  - Fator de Ramificação: 15.991211 
  ********************************************************************************************
 ```
+
+Adicionar Problemas
+-------------------
+O programa permite a adição de problemas feitos por qualquer utilizador. Para o programa reconhecer o problema terá de introduzir o mesmo de acordo com uma syntax específica:
+```
+(((0 0 0 0) (0 0 0 0) (0 0 (preta redonda alta oca) 0) (0 0 0 0)) ((preta quadrada baixa cheia) (branca redonda alta oca) (branca redonda baixa oca) (preta redonda baixa oca) (branca quadrada alta oca) (preta quadrada alta oca) (branca quadrada baixa oca) (preta quadrada baixa oca)(branca redonda alta cheia) (preta redonda alta cheia) (branca redonda baixa cheia) (preta redonda baixa cheia) (branca quadrada alta cheia) (preta quadrada alta cheia) (branca quadrada baixa cheia)))
+-
+(((0 0 0 0) (0 0 0 0) (0 0 0 0) (0 0 0 0)) ((preta redonda alta oca) (preta quadrada baixa cheia) (branca redonda alta oca) (branca redonda baixa oca) (preta redonda baixa oca) (branca quadrada alta oca) (preta quadrada alta oca) (branca quadrada baixa oca) (preta quadrada baixa oca)(branca redonda alta cheia) (preta redonda alta cheia) (branca redonda baixa cheia) (preta redonda baixa cheia) (branca quadrada alta cheia) (preta quadrada alta cheia) (branca quadrada baixa cheia)))
+```
+
+Todos os problemas são separados por um delimitador "-" e estão em linhas diferentes. O problema terá de estar na forma de:
+
+```
+( (tabuleiro) (reserva) )
+```
+Exemplo: 
+```
+(((0 0 0 0) (0 0 0 0) (0 0 (preta redonda alta oca) 0) (0 0 0 0)) ((preta quadrada baixa cheia) (branca redonda alta oca) (branca redonda baixa oca) (preta redonda baixa oca) (branca quadrada alta oca) (preta quadrada alta oca) (branca quadrada baixa oca) (preta quadrada baixa oca)(branca redonda alta cheia) (preta redonda alta cheia) (branca redonda baixa cheia) (preta redonda baixa cheia) (branca quadrada alta cheia) (preta quadrada alta cheia) (branca quadrada baixa cheia)))
+```
