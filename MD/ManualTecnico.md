@@ -1200,7 +1200,7 @@ Depois de realizar os 6 testes, podemos afirmar que o algoritmo mais consistente
 
 Limitações Técnicas
 -------------------
-Uma das maiores limitações do desenvolvimento deste projeto foi o espaço de memória heap limitado do LispWorks. Muitos dos problemas, em alguns algoritmos, não conseguiram executar até ao fim, o que não permite que se observe a estatística e os resultados dos mesmos. Sendo assim não se conseguiu realizar uma análise comparativa real de todos os algoritmos em questão.
+Uma das maiores limitações do desenvolvimento deste projeto foi o espaço de memória heap limitado do LispWorks. Muitos dos problemas, em alguns algoritmos, não conseguiram executar até ao fim, o que não permite que se observe a estatística e os resultados dos mesmos. Sendo assim não se conseguiu realizar uma análise comparativa real de todos os algoritmos em questão. Outra das limitações técnicas foi o facto de por vezes nas estatística o tempo de execução ser 0ms. Não sabemos a causa deste mau funcionamento e é uma das limitações que se teria de resolver numa próxima iteração do programa.
 
 Ideias para Desenvolvimento Futuro
 ----------------------------------
