@@ -782,7 +782,7 @@ Como podemos observar o DFS continua a ser o algoritmo com melhores resultados. 
 * Resultados
 	* **BFS**:  
 	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
-	* **DFS (Profundidade: 8):
+	* **DFS (Profundidade: 8)**:
 		```
 		 SOLUÇÃO 
 		 **************************************************************** 
@@ -877,7 +877,7 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 * Resultados
 	* **BFS**:  
 	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
-	* **DFS (Profundidade = 12)**
+	* **DFS (Profundidade = 12)**:
 		```
 		 SOLUÇÃO 
 		 **************************************************************** 
@@ -976,7 +976,7 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 	* **A-ESTRELA (1ª Heurística)**:  
 		![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
 		
-	* **A-ESTRELA (2ª Heurística):
+	* **A-ESTRELA (2ª Heurística)**:
     ```
 		 SOLUÇÃO 
 		 **************************************************************** 
@@ -1058,7 +1058,7 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 * Resultados: 
 	* **BFS**:  
 	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
-	* **DFS (Profundidade = 5)**
+	* **DFS (Profundidade = 5)**:
 		```
 		 SOLUÇÃO 
 		 **************************************************************** 
@@ -1121,7 +1121,7 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 	* **A-ESTRELA (1ª Heurística)**:   
 	![alt text](https://github.com/marcopereira5/jogodoquatro/blob/master/images_md/erro.png "Erro")
 	
-	* **A-ESTRELA (2ª Heurística):
+	* **A-ESTRELA (2ª Heurística)**:
 		```
 		 SOLUÇÃO 
 		 **************************************************************** 
@@ -1193,3 +1193,15 @@ Como podemos observar este problema apenas correu no DFS. O LispWorks tem um lim
 		 ```
 	* Análise Crítica:  
 	Neste problema podemos ver o quanto mais eficiente A-Estrela quando a Heurística é otimizada para o problema. O BFS e o A-Estrela com a 1ª Heurística não executaram devido à explicação do problema anterior. Neste problema o DFS com uma profundidade máxima de 5 tem uma menor eficiência que o A-Estrela com a segunda Heurística pois como o A-Estrela tem uma Heurística eficiente consegue encontrar logo o melhor caminho a seguir e o DFS vai procurando sem qualquer critério. Se aumentarmos a profundidade máxima o DFS poderá ser mais eficiente, mas nunca chegará à melhor solução possível.
+	
+Análise Geral
+-------------
+Depois de realizar os 6 testes, podemos afirmar que o algoritmo mais consistente para este problema é o DFS, mesmo que por vezes não encontre a solução ideal. Comprovamos assim a teoria de que se um problema tiver várias soluções em vários níveis e os sucessores de cada nó são muitos os DFS tem um melhor funcionamento. Em relação ao A-Estrela, a 1ª Heurística executou os primeiros 3 testes enquanto que a 2ª executou todos menos o 4. A única maneira de o A-Estrela com a 2ª Heurística não encontrar a solução é se o problema tiver um estado igual ao do problema 4. De resto, nos problemas finais, que são os mais difíceis, conseguiu encontar a melhor solução possível muito mais eficientemente que qualquer outro algortimo. Comprovamos assim que a 2ª Heurística é muito mais optimizada para o problema em questão que a 1ª. O BFS teve o pior desempenho, devido à quantidade de sucessores que cada nó produz.
+
+Limitações Técnicas
+-------------------
+Uma das maiores limitações do desenvolvimento deste projeto foi o espaço de memória heap limitado do LispWorks. Muitos dos problemas, em alguns algoritmos, não conseguiram executar até ao fim, o que não permite que se observe a estatística e os resultados dos mesmos. Sendo assim não se conseguiu realizar uma análise comparativa real de todos os algoritmos em questão.
+
+Ideias para Desenvolvimento Futuro
+----------------------------------
+A programação dos outros algoritmos de procura Simplified Memory‒Bounded A* (SMA*), Iterative Deepening A* (IDA*) ou Recursive Best First Search (RBFS).
