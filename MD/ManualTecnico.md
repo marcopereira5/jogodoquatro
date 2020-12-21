@@ -25,15 +25,14 @@ Representação de um nó / objeto
  * O estado do nó:  
    Que é dividido por duas secções:
    * O Tabuleiro (os zeros indicam casas vazias):
- ``` lisp
-(  
-  ((branca quadrada alta oca) (preta quadrada baixa cheia) (branca quadrada baixa oca) (preta quadrada alta oca))
-  ((branca redonda alta oca) (preta redonda alta oca) (branca redonda alta cheia) 0)   
-  (0 (preta redonda alta cheia) (preta redonda baixa cheia) 0)   
-  ((branca redonda baixa oca) (branca quadrada alta cheia) (preta redonda baixa oca) (branca quadrada baixa cheia))  
-)
-```
-  
+ 	```lisp
+	(  
+	  ((branca quadrada alta oca) (preta quadrada baixa cheia) (branca quadrada baixa oca) (preta quadrada alta oca))
+	  ((branca redonda alta oca) (preta redonda alta oca) (branca redonda alta cheia) 0)   
+	  (0 (preta redonda alta cheia) (preta redonda baixa cheia) 0)   
+	  ((branca redonda baixa oca) (branca quadrada alta cheia) (preta redonda baixa oca) (branca quadrada baixa cheia))  
+	)
+	```
    * A Reserva: 
  ```lisp
 (
