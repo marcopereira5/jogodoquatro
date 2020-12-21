@@ -33,7 +33,7 @@
          (FECHADOS_let1 fechados))
     (COND
      ((null ABERTOS_let1) NIL)
-     (T (let* ((N (car ABERTOS_let1)) (ABERTOS_let2 (cdr ABERTOS_let1)) (FECHADOS_let2 (append (list N) FECHADOS_let1)))
+     (T (let* ((N (car ABERTOS_let1)) (ABERTOS_let2 (remove (car abertos) ABERTOS_let1)) (FECHADOS_let2 (append (list N) FECHADOS_let1)))
           (cond
            ((funcall fun-objetivo N) (escrever-no (mostrar-solucao N (- (get-internal-real-time) START_TIME) 'bfs (1- (+ (list-length abertos) (list-length fechados))) (list-length fechados) (bissecao (no-profundidade (car abertos)) (1- (+ (list-length abertos) (list-length fechados))) 0.01))))
            (T (bfs nil fun-objetivo fun-sucessores operadores ABERTOS_let2 FECHADOS_let2))
@@ -58,9 +58,9 @@
          (FECHADOS_let fechados))
     (COND
      ((null ABERTOS_let) NIL)
-     (T (let* ((N (car ABERTOS_let)) (ABERTOS_let2 (cdr ABERTOS_let)) (FECHADOS_let2 (append (list N) FECHADOS_let)))
+     (T (let* ((N (car abertos)) (ABERTOS_let2 (remove (car abertos) ABERTOS_let)) (FECHADOS_let2 (append (list N) FECHADOS_let)))
           (cond
-           ((funcall fun-objetivo N) (escrever-no (mostrar-solucao N (- (get-internal-real-time) START_TIME) 'dfs (1- (+ (list-length ABERTOS_let2) (list-length FECHADOS_let2))) (list-length fechados) (bissecao (no-profundidade (car abertos)) (1- (+ (list-length abertos) (list-length fechados))) 0.01))))
+           ((funcall fun-objetivo N) (escrever-no (mostrar-solucao N (- (get-internal-real-time) START_TIME) 'dfs (1- (+ (list-length ABERTOS_let2) (list-length FECHADOS_let2))) (list-length fechados) (bissecao (no-profundidade N) (1- (+ (list-length abertos) (list-length fechados))) 0.01))))
            (T (dfs nil fun-objetivo fun-sucessores operadores max-nivel ABERTOS_let2 FECHADOS_let2))
            )
           )
